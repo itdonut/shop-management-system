@@ -4,22 +4,18 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
-@Table(name = "users")
+@Table(name = "providers")
 @Data
-public class User {
+public class Provider {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name = "username", unique = true)
-    private String username;
     @Column(name = "name")
     private String name;
-    @Column(name = "surname")
-    private String surname;
-    @Column(name = "password")
-    private String password;
-    @Column(name = "email")
-    private String email;
+    @Column(name = "address")
+    private String address;
     @Column(name = "phone")
     private String phone;
+    @Column(name = "email")
+    private String email;
 }
