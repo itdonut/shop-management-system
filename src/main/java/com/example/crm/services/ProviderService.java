@@ -20,14 +20,19 @@ public class ProviderService {
         return providerRepository.findAll();
     }
 
-    public void addProvider(ProviderRequest providerRequest) {
-        Provider provider = new Provider();
-        provider.setName(providerRequest.getName());
-        provider.setEmail(providerRequest.getEmail());
-        provider.setPhone(providerRequest.getPhone());
-        provider.setAddress(providerRequest.getAddress());
+    public boolean addProvider(ProviderRequest providerRequest) {
+        try {
+            Provider provider = new Provider();
+            provider.setName(providerRequest.getName());
+            provider.setEmail(providerRequest.getEmail());
+            provider.setPhone(providerRequest.getPhone());
+            provider.setAddress(providerRequest.getAddress());
 
-        providerRepository.save(provider);
+            providerRepository.save(provider);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     public void deleteProvider(String name) {

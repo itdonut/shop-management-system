@@ -11,5 +11,5 @@ import java.util.Optional;
 public interface ProviderRepository extends JpaRepository<Provider, Integer> {
     boolean existsProviderByName(String name);
     Optional<Provider> findProviderByName(String name);
-
+    Optional<Provider> findProviderById(int id);
 }

@@ -25,8 +25,10 @@ public class ProviderController {
         if (providerService.existsProviderByName(providerRequest.getName()))
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(String.format("Provider '%s' has been already existed", providerRequest.getName()));
 
-        providerService.addProvider(providerRequest);
-        return ResponseEntity.status(HttpStatus.OK).body("Success");
+        if (providerService.addProvider(providerRequest))
+            return ResponseEntity.status(HttpStatus.OK).body("Success");
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Failure");
     }
 
     @DeleteMapping("/providers/{name}")
